@@ -49,6 +49,7 @@ const CalendarGrid: React.FC = () => {
 
   // Load events from localStorage
   useEffect(() => {
+    console.log(setCategories);
     const storedEvents = localStorage.getItem("events");
     if (storedEvents) setEvents(JSON.parse(storedEvents));
   }, []);
@@ -94,7 +95,7 @@ const CalendarGrid: React.FC = () => {
   // Utility function to filter events for the current month
   const getEventsForCurrentMonth = () => {
     return events.filter((event) => {
-      const [day, month, year] = event.date.split("-").map(Number);
+      const  [month, year] = event.date.split("-").slice(1,3).map(Number);
       return month - 1 === currentMonth && year === currentYear;
     });
   };
